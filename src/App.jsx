@@ -2,8 +2,13 @@ import "./App.css";
 import hero from "./assets/hero.png";
 import workspace from "./assets/workspace.png";
 import { TypeAnimation } from "react-type-animation";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
+import emailjs from "@emailjs/browser";
 import ChatBot from "./components/ChatBot";
+
+const EMAILJS_SERVICE_ID  = "service_68mefci";
+const EMAILJS_TEMPLATE_ID = "template_30fkp08";
+const EMAILJS_PUBLIC_KEY  = "7fg7d5HOPSCEW5O_X";
 
 function App() {
   const skillCards = [
@@ -86,6 +91,32 @@ function App() {
     return () => window.removeEventListener("keydown", onKey);
   }, [mongoModal, closeMongoModal]);
 
+  // ── Contact form state ─────────────────────────────────────────────────
+  const formRef = useRef(null);
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formStatus, setFormStatus] = useState("idle"); // idle | sending | success | error
+
+  const handleFormChange = (e) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    setFormStatus("sending");
+    try {
+      await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        EMAILJS_PUBLIC_KEY
+      );
+      setFormStatus("success");
+      setFormData({ name: "", email: "", message: "" });
+    } catch {
+      setFormStatus("error");
+    }
+  };
+
   return (
     <div className="app">
       <header className="navbar">
@@ -149,7 +180,7 @@ function App() {
           <div className="glow"></div>
           <div className="circle"></div>
 
-          <img src={hero} className="hero-img" alt="Fathima Minu Avatar" />
+          <img src="/Mypic.png" className="hero-img" alt="Fathima Minu" />
 
           <div className="cube cube1"></div>
           <div className="cube cube2"></div>
@@ -597,67 +628,158 @@ function App() {
       </section>
 
       <section className="contact section" id="contact">
+
         <div className="contact-header">
-          <p className="contact-label">GET IN TOUCH</p>
-          <h2 className="contact-heading">Contact Me</h2>
-          <p className="contact-subtitle">Let's work together on your next project.</p>
+          <p className="contact-label">CONTACT</p>
+          <h2 className="contact-heading">Get In Touch</h2>
+          <p className="contact-subtitle">
+            Open to internship opportunities, collaborations, and interesting projects.
+          </p>
         </div>
 
         <div className="contact-container">
+
+          {/* ── Left: channels ── */}
           <div className="contact-info">
+
+            <a
+              href="mailto:minufathima2004@gmail.com"
+              className="contact-item contact-item--link"
+              aria-label="Email Fathima Minu"
+            >
+              <div className="contact-item__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </div>
+              <div className="contact-item__body">
+                <span className="contact-item__label">Email</span>
+                <span className="contact-item__value">minufathima2004@gmail.com</span>
+              </div>
+              <svg className="contact-item__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/fathima-minu-b510b4372"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-item contact-item--link"
+              aria-label="LinkedIn profile"
+            >
+              <div className="contact-item__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+              </div>
+              <div className="contact-item__body">
+                <span className="contact-item__label">LinkedIn</span>
+                <span className="contact-item__value">fathima-minu-b510b4372</span>
+              </div>
+              <svg className="contact-item__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+
+            <a
+              href="https://github.com/FathimaMinu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-item contact-item--link"
+              aria-label="GitHub profile"
+            >
+              <div className="contact-item__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+              </div>
+              <div className="contact-item__body">
+                <span className="contact-item__label">GitHub</span>
+                <span className="contact-item__value">github.com/FathimaMinu</span>
+              </div>
+              <svg className="contact-item__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+
             <div className="contact-item">
-              <span>📧</span>
-              <div>
-                <h4>Email</h4>
-                <p>minufathima2004@gmail.com</p>
+              <div className="contact-item__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div className="contact-item__body">
+                <span className="contact-item__label">Location</span>
+                <span className="contact-item__value">Galkissa, Mount Lavinia, Sri Lanka</span>
               </div>
             </div>
 
-            <div className="contact-item">
-              <span>📍</span>
-              <div>
-                <h4>Location</h4>
-                <p>Rajagiriya, Sri Lanka</p>
-              </div>
-            </div>
-
-            <div className="contact-item">
-              <span>💼</span>
-              <div>
-                <h4>Looking For</h4>
-                <p>AI/ML Internship Opportunities</p>
-              </div>
-            </div>
-
-            <div className="contact-item">
-              <span>🔗</span>
-              <div>
-                <h4>LinkedIn</h4>
-                <p>linkedin.com/in/fathima-minu-b510b4372</p>
-              </div>
-            </div>
-
-            <div className="contact-item">
-              <span>🐙</span>
-              <div>
-                <h4>GitHub</h4>
-                <p>github.com/FathimaMinu</p>
-              </div>
-            </div>
           </div>
 
-          <form className="contact-form">
-            <label>Your Name</label>
-            <input type="text" placeholder="Enter your name" />
+          {/* ── Right: form ── */}
+          <form
+            className="contact-form"
+            ref={formRef}
+            onSubmit={handleFormSubmit}
+            noValidate
+          >
+            <div className="contact-form-row">
+              <div className="contact-form-field">
+                <label htmlFor="contact-name">Name</label>
+                <input
+                  id="contact-name"
+                  type="text"
+                  name="name"
+                  placeholder="Your name"
+                  value={formData.name}
+                  onChange={handleFormChange}
+                  required
+                  autoComplete="name"
+                  disabled={formStatus === "sending"}
+                />
+              </div>
+              <div className="contact-form-field">
+                <label htmlFor="contact-email">Email</label>
+                <input
+                  id="contact-email"
+                  type="email"
+                  name="email"
+                  placeholder="your@email.com"
+                  value={formData.email}
+                  onChange={handleFormChange}
+                  required
+                  autoComplete="email"
+                  disabled={formStatus === "sending"}
+                />
+              </div>
+            </div>
 
-            <label>Your Email</label>
-            <input type="email" placeholder="Enter your email" />
+            <div className="contact-form-field">
+              <label htmlFor="contact-message">Message</label>
+              <textarea
+                id="contact-message"
+                name="message"
+                placeholder="Tell me about your project or opportunity..."
+                rows="6"
+                value={formData.message}
+                onChange={handleFormChange}
+                required
+                disabled={formStatus === "sending"}
+              />
+            </div>
 
-            <label>Your Message</label>
-            <textarea placeholder="Write your message..." rows="6"></textarea>
+            <div aria-live="polite" aria-atomic="true">
+              {formStatus === "success" && (
+                <p className="contact-form-status contact-form-status--success" role="status">
+                  Message sent — I'll get back to you shortly.
+                </p>
+              )}
+              {formStatus === "error" && (
+                <p className="contact-form-status contact-form-status--error" role="alert">
+                  Something went wrong. Please try again or email me directly.
+                </p>
+              )}
+            </div>
 
-            <button type="submit">Send Message</button>
+            <button
+              type="submit"
+              className="contact-form-btn"
+              disabled={formStatus === "sending"}
+              aria-disabled={formStatus === "sending"}
+            >
+              {formStatus === "sending" ? (
+                <><span className="contact-form-btn__spinner" aria-hidden="true" /> Sending</>
+              ) : "Send Message"}
+            </button>
           </form>
+
         </div>
       </section>
 
