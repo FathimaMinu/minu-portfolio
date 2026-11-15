@@ -5,6 +5,7 @@ import { TypeAnimation } from "react-type-animation";
 import { useState, useEffect, useCallback, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import ChatBot from "./components/ChatBot";
+import { Code } from "lucide-react";
 
 const EMAILJS_SERVICE_ID  = "service_68mefci";
 const EMAILJS_TEMPLATE_ID = "template_30fkp08";
@@ -31,13 +32,13 @@ function App() {
       title: "Enterprise AI Assistant Platform",
       desc: "AI-powered enterprise platform with document understanding, RAG architecture, workflow automation and analytics dashboard.",
       tags: ["AI", "RAG", "React", "Spring Boot"],
-      github: "https://github.com/FathimaMinu"
+      github: "https://github.com/FathimaMinu/enterprise-ai-platform-"
     },
     {
       title: "Pharmacy Inventory System",
       desc: "Real-time pharmacy inventory system with medicine CRUD, low-stock alerts, expiry tracking and quick sale interface.",
       tags: ["React", "Supabase", "PostgreSQL", "CSS"],
-      github: "https://github.com/FathimaMinu"
+      github: "https://github.com/FathimaMinu/pharmacy-inventory-system"
     },
     {
       title: "Student Performance Prediction",
@@ -171,7 +172,7 @@ function App() {
           <div className="buttons">
             <a href="#projects" className="primary">View Projects</a>
             <a href="#contact" className="secondary">Contact Me</a>
-            <a href="/resume.pdf" download className="primary resume-btn">Download CV</a>
+            <a href="/My_CV.pdf" download="Fathima_Minu_CV.pdf" className="primary resume-btn">Download CV</a>
           </div>
 
         </div>
@@ -195,10 +196,7 @@ function App() {
           <h2>Who I Am</h2>
 
           <p className="about-text">
-            I'm Fathima Minu, an undergraduate specializing in Information Technology at
-            SLIIT, with a strong passion for Artificial Intelligence and Machine Learning.
-            I enjoy building intelligent, scalable and modern web applications that combine
-            innovative technology with user-friendly experiences.
+            I am Fathima Minu, an IT undergraduate at SLIIT with a deep passion for AI, Machine Learning, and Full-Stack Development. I love bridging the gap between intelligent algorithms and user-friendly web applications. From training ML models with Python to building scalable APIs with Spring Boot and React, I enjoy bringing complex ideas to life. I'm currently seeking an internship in AI/ML or Software Engineering, where I can turn my curiosity into real-world, impactful solutions.
           </p>
         </div>
 
@@ -606,7 +604,9 @@ function App() {
         <div className="project-grid">
           {projects.map((project, index) => (
             <div className="project-card" key={index}>
-              <div className="project-icon">🚀</div>
+              <div className="project-icon">
+                <Code size={30} strokeWidth={2} />
+              </div>
               <h3>{project.title}</h3>
               <p>{project.desc}</p>
               <div className="tags">
@@ -658,7 +658,7 @@ function App() {
             </a>
 
             <a
-              href="https://www.linkedin.com/in/fathima-minu-b510b4372"
+              href="https://www.linkedin.com/in/fathima-minu"
               target="_blank"
               rel="noopener noreferrer"
               className="contact-item contact-item--link"

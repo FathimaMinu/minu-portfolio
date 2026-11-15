@@ -98,6 +98,14 @@ body{
 .navbar nav{
   display:flex;
   gap:22px;
+  min-width:0;
+  overflow-x:auto;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+
+.navbar nav::-webkit-scrollbar{
+  display:none;
 }
 
 .navbar a{
@@ -651,6 +659,16 @@ body{
 .project-icon{
   font-size:48px;
   margin-bottom:16px;
+  color:var(--accent);
+  filter:drop-shadow(0 0 8px rgba(56,189,248,0.5));
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+}
+
+.project-icon svg{
+  width:30px;
+  height:30px;
 }
 
 .project-card h3{
@@ -1132,13 +1150,13 @@ body{
   }
 
   .circle{
-    width:340px;
-    height:340px;
+    width:min(340px, 84vw);
+    height:min(340px, 84vw);
   }
 
   .hero-img{
-    width:340px;
-    height:340px;
+    width:min(340px, 84vw);
+    height:min(340px, 84vw);
   }
 
   .cube1{
@@ -1525,7 +1543,8 @@ body{
   }
 
   .rocket-img{
-    width:500px;
+    width:100%;
+    max-width:500px;
     transform:scale(1);
   }
 
@@ -2178,7 +2197,7 @@ a.certificate-btn:hover{
 
 @media(max-width:480px){
   .chat-window{
-    width:calc(100vw - 24px);
+    width:calc(100% - 24px);
     height:85vh;
     bottom:86px;
     right:12px;
@@ -2197,4 +2216,19 @@ a.certificate-btn:hover{
   .chat-fab           { animation:none; }
   .chat-dot           { animation:none; opacity:1; }
   .chat-window        { animation:none; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Sections keep their original full-width layout (Edge-perfect).
+   Only the scrollbar-gutter in index.css keeps Chrome aligned.
+   ═══════════════════════════════════════════════════════════════ */
+
+.hero,
+.about,
+.skills,
+.certifications,
+.experience,
+.projects,
+.contact{
+  box-sizing:border-box;
 }

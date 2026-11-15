@@ -17,6 +17,11 @@ import {
 
 const KB = [
   {
+    keywords: ["who", "about", "yourself", "introduce", "fathima", "minu", "your name", "tell me about", "what do you do"],
+    answer:
+      "I am Fathima Minu, an IT undergraduate at SLIIT with a deep passion for AI, Machine Learning, and Full-Stack Development. I love bridging the gap between intelligent algorithms and user-friendly web applications. From training ML models with Python to building scalable APIs with Spring Boot and React, I enjoy bringing complex ideas to life. I'm currently seeking an internship in AI/ML or Software Engineering, where I can turn my curiosity into real-world, impactful solutions.",
+  },
+  {
     keywords: ["skill", "skills", "tech", "stack", "know", "technolog"],
     answer:
       "Minu works with Python, Machine Learning, TensorFlow, Scikit-Learn, and Pandas on the AI side. On the full-stack side she uses React, JavaScript, Spring Boot, Java, and MongoDB. She also knows Git, Figma, and Swagger for tooling.",
@@ -34,12 +39,12 @@ const KB = [
   {
     keywords: ["contact", "email", "reach", "linkedin", "github"],
     answer:
-      "You can reach Minu at minufathima2004@gmail.com. She's also on LinkedIn at linkedin.com/in/fathima-minu-b510b4372 and GitHub at github.com/FathimaMinu. Or use the Contact form on this page.",
+      "You can reach Minu at minufathima2004@gmail.com. She's also on LinkedIn at linkedin.com/in/fathima-minu and GitHub at github.com/FathimaMinu. Or use the Contact form on this page.",
   },
   {
     keywords: ["hire", "available", "internship", "opportunity"],
     answer:
-      "Yes! Minu is actively seeking AI/ML internship opportunities. She's based in Rajagiriya, Sri Lanka and open to remote or on-site roles. Drop a message via the Contact form or email minufathima2004@gmail.com.",
+      "Yes! Minu is actively seeking AI/ML or Software Engineering internship opportunities. She's based in Galkissa, Mount Lavinia, Sri Lanka and open to remote or on-site roles. Drop a message via the Contact form or email minufathima2004@gmail.com.",
   },
   {
     keywords: ["hi", "hello", "hey", "sup", "yo"],
