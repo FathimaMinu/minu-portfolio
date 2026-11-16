@@ -6,6 +6,23 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import ChatBot from "./components/ChatBot";
 import { Code } from "lucide-react";
+import {
+  SiHtml5,
+  SiCss,
+  SiJavascript,
+  SiSpringboot,
+  SiSupabase,
+  SiScikitlearn,
+} from "react-icons/si";
+import {
+  FaReact,
+  FaPython,
+  FaJava,
+  FaFigma,
+  FaPuzzlePiece,
+  FaRobot,
+} from "react-icons/fa";
+import { LuCpu, LuTrendingUp, LuUsers } from "react-icons/lu";
 
 const EMAILJS_SERVICE_ID  = "service_68mefci";
 const EMAILJS_TEMPLATE_ID = "template_30fkp08";
@@ -13,18 +30,18 @@ const EMAILJS_PUBLIC_KEY  = "7fg7d5HOPSCEW5O_X";
 
 function App() {
   const skillCards = [
-    { name: "HTML", icon: "🌐" },
-    { name: "CSS", icon: "🎨" },
-    { name: "JavaScript", icon: "🟨" },
-    { name: "React JS", icon: "⚛️" },
-    { name: "Python", icon: "🐍" },
-    { name: "Java", icon: "☕" },
-    { name: "Spring Boot", icon: "🍃" },
-    { name: "Supabase", icon: "🗄️" },
-    { name: "Machine Learning", icon: "🤖" },
-    { name: "Artificial Intelligence", icon: "🧠" },
-    { name: "Figma", icon: "💎" },
-    { name: "Problem Solving", icon: "🧩" }
+    { name: "HTML", Icon: SiHtml5, color: "#E34F26" },
+    { name: "CSS", Icon: SiCss, color: "#1572B6" },
+    { name: "JavaScript", Icon: SiJavascript, color: "#F7DF1E" },
+    { name: "React JS", Icon: FaReact, color: "#61DAFB" },
+    { name: "Python", Icon: FaPython, color: "#3776AB" },
+    { name: "Java", Icon: FaJava, color: "#007396" },
+    { name: "Spring Boot", Icon: SiSpringboot, color: "#6DB33F" },
+    { name: "Supabase", Icon: SiSupabase, color: "#3ECF8E" },
+    { name: "Machine Learning", Icon: SiScikitlearn, color: "#F7931E" },
+    { name: "Artificial Intelligence", Icon: FaRobot, color: "#38bdf8" },
+    { name: "Figma", Icon: FaFigma, color: "#F24E1E" },
+    { name: "Problem Solving", Icon: FaPuzzlePiece, color: "#00C2FF" }
   ];
 
   const projects = [
@@ -44,19 +61,19 @@ function App() {
       title: "Student Performance Prediction",
       desc: "Machine Learning model that predicts student exam performance using Python, Pandas and Scikit-Learn.",
       tags: ["Python", "ML", "Pandas", "Scikit-Learn"],
-      github: "https://github.com/FathimaMinu"
+      github: "https://github.com/FathimaMinu/student-performance-predictor"
     },
     {
       title: "NOVA X",
       desc: "Futuristic 3D smartphone showcase with AI recommendation and animated UI.",
       tags: ["React", "Three.js", "Framer Motion"],
-      github: "https://github.com/FathimaMinu"
+      github: "https://github.com/FathimaMinu/nova-x"
     },
     {
       title: "RideLink — Account Service",
       desc: "Backend microservice for a ride-sharing platform using Java 17 + Spring Boot 3 + MongoDB.",
       tags: ["Java 17", "Spring Boot", "MongoDB", "JWT", "Spring Security"],
-      github: "https://github.com/IT24101839/Ridelink.git"
+      github: "https://github.com/FathimaMinu/Account-service"
     },
   ];
 
@@ -206,19 +223,25 @@ function App() {
 
         <div className="about-cards">
           <div className="mini-card">
-            <div className="mini-icon">🧠</div>
+            <div className="mini-icon">
+              <LuCpu size={30} />
+            </div>
             <h3>Problem Solver</h3>
             <p>I love solving complex problems with smart solutions.</p>
           </div>
 
           <div className="mini-card">
-            <div className="mini-icon">⚡</div>
+            <div className="mini-icon">
+              <LuTrendingUp size={30} />
+            </div>
             <h3>Quick Learner</h3>
             <p>Always eager to learn new technologies and tools.</p>
           </div>
 
           <div className="mini-card">
-            <div className="mini-icon">🤝</div>
+            <div className="mini-icon">
+              <LuUsers size={30} />
+            </div>
             <h3>Team Player</h3>
             <p>I enjoy collaborating and building with teams.</p>
           </div>
@@ -233,7 +256,15 @@ function App() {
           <div className="skills-left">
             {skillCards.map((skill, index) => (
               <div className="skill-box" key={index}>
-                <div className="skill-icon">{skill.icon}</div>
+                <div className="skill-icon">
+                  <skill.Icon
+                    size={36}
+                    style={{
+                      color: skill.color,
+                      filter: `drop-shadow(0 0 8px ${skill.color}66)`,
+                    }}
+                  />
+                </div>
                 <h3>{skill.name}</h3>
               </div>
             ))}
