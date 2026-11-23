@@ -156,7 +156,7 @@ function App() {
 
       <section className="hero" id="home">
         <div className="hero-left">
-          <p className="tag">✨ Aspiring AI/ML Engineer | Full Stack Developer</p>
+          <p className="tag">✨ Aspiring Software Engineer | Full Stack Developer</p>
 
           <h1>
             Hi, I'm <span>Fathima Minu</span>
