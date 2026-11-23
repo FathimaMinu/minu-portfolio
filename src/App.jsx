@@ -164,15 +164,15 @@ function App() {
 
           <TypeAnimation
             sequence={[
-              "Aspiring AI/ML Engineer",
+              "Software Engineer",
               2000,
-              "Machine Learning Enthusiast",
+              "Full-Stack Developer",
+              2000,
+              "React & Spring Boot Developer",
+              2000,
+              "Problem Solver",
               2000,
               "Building AI-Powered Systems",
-              2000,
-              "Full Stack Developer",
-              2000,
-              "Exploring LLMs & RAG",
               2000
             ]}
             wrapper="h3"
@@ -182,9 +182,8 @@ function App() {
           />
 
           <p className="desc">
-            Building intelligent, scalable and futuristic web applications with AI,
-            Machine Learning and full-stack technologies.
-          </p>
+  Building scalable, user-friendly web applications with modern full-stack technologies and AI integration.
+</p>
 
           <div className="buttons">
             <a href="#projects" className="primary">View Projects</a>
@@ -213,8 +212,7 @@ function App() {
           <h2>Who I Am</h2>
 
           <p className="about-text">
-            I am Fathima Minu, an IT undergraduate at SLIIT with a deep passion for AI, Machine Learning, and Full-Stack Development. I love bridging the gap between intelligent algorithms and user-friendly web applications. From training ML models with Python to building scalable APIs with Spring Boot and React, I enjoy bringing complex ideas to life. I'm currently seeking an internship in AI/ML or Software Engineering, where I can turn my curiosity into real-world, impactful solutions.
-          </p>
+           I am Fathima Minu, an Information Technology undergraduate at SLIIT with an interest in Software Engineering and Full-Stack Development. I have experience working with Java, Spring Boot, React.js, JavaScript, and Python through academic and personal projects. I am eager to learn new technologies, improve my skills, and gain practical industry experience through a Software Engineering Internship.</p>
         </div>
 
         <div className="about-right">
